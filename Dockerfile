@@ -42,6 +42,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory permissions
+COPY .env.example .env
 COPY . /var/www
 RUN chown -R www:www /var/www
 
@@ -51,3 +52,5 @@ USER www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
+
+RUN php artisan key:gen
