@@ -1,6 +1,5 @@
-pipeline {
-    agent { label 'docker' }
-    stages {
+node {
+    stage {
         stage('Build') {
             steps {
                 echo 'Build image'
